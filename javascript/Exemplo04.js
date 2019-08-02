@@ -19,7 +19,7 @@ function adicionarEditar() {
 function adicionar() {
     var campoNome = document.getElementById("nome");
     var nome = campoNome.value;
-    valido = validar(nome, campoNome);
+    valido = validarCampo(nome, campoNome);
     if (valido == false) {
         return;
     }
@@ -87,17 +87,17 @@ function preencherCampo() {
 }
 
 function editar() {
-    var nome =document.getElementById('nome').value;
-    tarefas[indiceParaEditar]=nome;
+    var nome = document.getElementById('nome').value;
+    tarefas[indiceParaEditar] = nome;
 
     //Atualizar tabela
-    var trs=document.getElementById('registros').childNodes;
-    var elementoTr=trs[indiceParaEditar];
-    elementoTr.childNodes[0].innerHTML=nome;
+    var trs = document.getElementById('registros').childNodes;
+    var elementoTr = trs[indiceParaEditar];
+    elementoTr.childNodes[0].innerHTML = nome;
 
 
-    indiceParaEditar=-1;
-    document.getElementById('nome').value='';
+    indiceParaEditar = -1;
+    document.getElementById('nome').value = '';
     document.getElementById('nome').focus();
 
 }
@@ -111,7 +111,7 @@ function limparCampo(campo) {
     campo.focus();
 }
 
-function validar(nome, campo) {
+function validarCampo(nome, campo) {
     texto = '';
 
     if (nome.trim().length == 0) {
@@ -148,4 +148,10 @@ function validar(nome, campo) {
     }
 
     return true;
+}
+
+function validar() {
+    var campo = document.getElementById('nome');
+    var nome = campo.value;
+    return validarCampo(nome, campo);
 }
